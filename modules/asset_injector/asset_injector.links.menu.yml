@@ -1,0 +1,18 @@
+asset_injector.development:
+  title: 'Asset Injector'
+  route_name: asset_injector.development
+  description: 'Add assets to the page output based on configurable rules.'
+  parent: system.admin_config_development
+
+entity.css_injector.collection:
+  title: 'CSS Injector'
+  route_name: entity.css_injector.collection
+  description: 'Add CSS to the page output based on configurable rules.'
+  parent: asset_injector.development
+
+
+entity.js_injector.collection:
+  title: 'JS Injector'
+  route_name: entity.js_injector.collection
+  description: 'Add JS to the page output based on configurable rules.'
+  parent: asset_injector.development

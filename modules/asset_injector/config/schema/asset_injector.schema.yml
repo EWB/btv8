@@ -1,0 +1,63 @@
+asset_injector.css_injector.*:
+  type: config_entity
+  label: 'Css Injector config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    code:
+      type: text
+      label: 'Entered CSS'
+    media:
+      type: string
+      label: 'Media type. ie all, print, screen'
+    nodeType:
+      type: string
+      label: 'Node Type too apply asset'
+    themes:
+      type: array
+      label: 'Themes to which css should apply'
+    preprocess:
+      type: boolean
+      label: 'Preprocess css before using'
+    visibility:
+      type: boolean
+      label: 'White or black list pages'
+    pages:
+      type: text
+      label: 'list of pages to be white/black listed'
+
+asset_injector.js_injector.*:
+  type: config_entity
+  label: 'Js Injector config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    code:
+      type: text
+      label: 'Entered JS'
+    nodeType:
+      type: string
+      label: 'Node Type too apply asset'
+    themes:
+      type: array
+      label: 'Themes to which js should apply'
+    jquery:
+      type: boolean
+      label: 'Include jQuery'
+    preprocess:
+      type: boolean
+      label: 'Preprocess css before using'
+    visibility:
+      type: boolean
+      label: 'White or black list pages'
+    pages:
+      type: text
+      label: 'list of pages to be white/black listed'

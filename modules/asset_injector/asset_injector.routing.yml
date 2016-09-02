@@ -1,0 +1,107 @@
+asset_injector.development:
+  path: '/admin/config/development/asset-injector'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Asset Injector'
+  requirements:
+    _permission: 'administer css assets injector'
+    _permission: 'administer js assets injector'
+
+
+# CssInjector routing definition
+entity.css_injector.collection:
+  path: '/admin/config/development/asset-injector/css'
+  defaults:
+    _entity_list: 'css_injector'
+    _title: 'Css Injector'
+  requirements:
+    _permission: 'administer css assets injector'
+
+entity.css_injector.add_form:
+  path: '/admin/config/development/asset-injector/css/add'
+  defaults:
+    _entity_form: 'css_injector.add'
+    _title: 'Add Css Injector'
+  requirements:
+    _permission: 'administer css assets injector'
+
+entity.css_injector.edit_form:
+  path: '/admin/config/development/asset-injector/css/{css_injector}'
+  defaults:
+    _entity_form: 'css_injector.edit'
+    _title: 'Edit Css Injector'
+  requirements:
+    _permission: 'administer css assets injector'
+
+entity.css_injector.delete_form:
+  path: '/admin/config/development/asset-injector/css/{css_injector}/delete'
+  defaults:
+    _entity_form: 'css_injector.delete'
+    _title: 'Delete Css Injector'
+  requirements:
+    _permission: 'administer css assets injector'
+
+entity.css_injector.enable:
+  path: '/admin/config/development/asset-injector/css/{css_injector}/enable'
+  defaults:
+    _entity_form: 'css_injector.enable'
+    _title: 'Enable Css Injector'
+  requirements:
+    _permission: 'administer css assets injector'
+
+entity.css_injector.disable:
+  path: '/admin/config/development/asset-injector/css/{css_injector}/disable'
+  defaults:
+    _entity_form: 'css_injector.disable'
+    _title: 'Disable Css Injector'
+  requirements:
+    _permission: 'administer css assets injector'
+
+# JsInjector routing definition
+entity.js_injector.collection:
+  path: '/admin/config/development/asset-injector/js'
+  defaults:
+    _entity_list: 'js_injector'
+    _title: 'Js Injector'
+  requirements:
+    _permission: 'administer js assets injector'
+
+entity.js_injector.add_form:
+  path: '/admin/config/development/asset-injector/js/add'
+  defaults:
+    _entity_form: 'js_injector.add'
+    _title: 'Add Js Injector'
+  requirements:
+    _permission: 'administer js assets injector'
+
+entity.js_injector.edit_form:
+  path: '/admin/config/development/asset-injector/js/{js_injector}'
+  defaults:
+    _entity_form: 'js_injector.edit'
+    _title: 'Edit Js Injector'
+  requirements:
+    _permission: 'administer js assets injector'
+
+entity.js_injector.delete_form:
+  path: '/admin/config/development/asset-injector/js/{js_injector}/delete'
+  defaults:
+    _entity_form: 'js_injector.delete'
+    _title: 'Delete Js Injector'
+  requirements:
+    _permission: 'administer js assets injector'
+
+entity.js_injector.enable:
+  path: '/admin/config/development/asset-injector/js/{js_injector}/enable'
+  defaults:
+    _entity_form: 'js_injector.enable'
+    _title: 'Enable js Injector'
+  requirements:
+    _permission: 'administer js assets injector'
+
+entity.js_injector.disable:
+  path: '/admin/config/development/asset-injector/js/{js_injector}/disable'
+  defaults:
+    _entity_form: 'js_injector.disable'
+    _title: 'Disable js Injector'
+  requirements:
+    _permission: 'administer js assets injector'

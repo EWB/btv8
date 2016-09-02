@@ -1,0 +1,11 @@
+entity.css_injector.add_form:
+  route_name: 'entity.css_injector.add_form'
+  title: 'Add Css Injector'
+  appears_on:
+    - entity.css_injector.collection
+
+entity.js_injector.add_form:
+  route_name: 'entity.js_injector.add_form'
+  title: 'Add Js Injector'
+  appears_on:
+    - entity.js_injector.collection

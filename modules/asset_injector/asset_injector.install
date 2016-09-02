@@ -1,0 +1,24 @@
+<?php
+/**
+ * @file
+ * Contains install and uninstall hooks.
+ */
+
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_install().
+ */
+function asset_injector_install() {
+  $url = Url::fromUserInput('/admin/config/development/asset-injector');
+  drupal_set_message(t('Asset Injector can be configured at @link', [
+    '@link' => \Drupal::l($url->toString(), $url),
+  ]));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function asset_injector_uninstall() {
+  file_unmanaged_delete_recursive(file_build_uri('/asset_injector'));
+}

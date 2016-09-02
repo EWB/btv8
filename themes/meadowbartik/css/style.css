@@ -1,0 +1,90 @@
+/*css styles for meadowbartik theme*/
+
+body  {
+	font-size: 18px;
+    font-family: "Avenir", "Helvetica", sans-serif;
+    color: #333333;
+    font-weight: 300;
+    line-height: 150%;
+}
+#header {
+	background: #2E5659;
+}
+
+#block-mainnavigation {
+	width:100%;
+	background: #2E5659;
+}
+ul.sf-menu.menu li {
+  background-color: #2E5659;
+}
+.region-primary-menu {
+    background-color: #2E5659;
+    border-color: #2E5659;
+}
+.region-primary-menu .menu a {
+    color: #fff;
+    background: #2E5659;
+    text-shadow: 0;
+    border-radius: 0;
+}
+.region-primary-menu .menu a:hover,
+.region-primary-menu .menu a:focus {
+  background: #2E5659;
+}
+.region-primary-menu .menu a:active {
+  background: #2E5659;
+}
+.region-primary-menu .menu-item a.is-active {
+  border-bottom: none;
+}
+ul.menu a.is-active {
+    color: yellow;
+}
+.region-primary-menu .menu-item a.is-active, .region-primary-menu .menu-item--active-trail a {
+    background: #2E5659;
+    background-color: #2E5659;
+}
+/*ewb this section is all about the background colors*/
+#header, #page-wrapper, #page {
+	background: #f0f0f0;
+	background: #fff;
+}
+.region-header, .main-wrapper, .layout-container, .region-highlighted, .featured-top, .featured-bottom  {
+	background:#fff;
+	border-top:#fff;
+	border-bottom:#fff;
+}
+.featured-top {
+	padding-bottom:2px;
+	padding: 20px 10px 1px 10px;
+}
+.site-footer .layout-container {
+	background: #292929;
+}
+
+/*ewb with a bit of a hack to keep frontpage content hidden*/
+.path-frontpage .layout-main {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.view-frontpage {
+	display:none;
+}	
+
+.layout-main-wrapper {
+     min-height: 1px; /*ewb override*/
+}
+
+.field--name-field-icon-link {
+/*	display: block;
+    margin-left: auto;
+    margin-right: auto*/
+    text-align: center;
+   } 
+
+.fa {
+	text-align: center;
+	color:#2E5659;
+}

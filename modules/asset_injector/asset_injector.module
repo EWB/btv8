@@ -1,0 +1,93 @@
+<?php
+/**
+ * @file
+ * Contains module asset_injector.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use \Drupal\asset_injector\Entity\JsInjector;
+use \Drupal\asset_injector\Entity\CssInjector;
+
+/**
+ * Implements hook_help().
+ */
+function asset_injector_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the asset_injector module.
+    case 'help.page.asset_injector':
+      $output = '';
+      $output .= '<p>' . t('Use Asset injector rules to add small snippets of code to the page output when specific criteria are met. For example, a simple rule could float a particular div to the right on node editing pages.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_library_info_build().
+ */
+function asset_injector_library_info_build() {
+  $libraries = [];
+  $query = \Drupal::entityQuery('js_injector');
+  foreach ($query->execute() as $id) {
+    $rule = JsInjector::load($id);
+    $url = parse_url(file_create_url(file_build_uri("asset_injector/$id.js")));
+    $url['path'] = str_replace(base_path(), '/', $url['path']);
+    $libraries["js/$id"] = [
+      'js' => [
+        $url['path'] => [
+          'preprocess' => is_null($rule->preprocess) ? FALSE : $rule->preprocess,
+        ],
+      ],
+    ];
+
+    if ($rule->jquery) {
+      $libraries["js/$id"]['dependencies'] = ['core/jquery'];
+    }
+  }
+
+  $query = \Drupal::entityQuery('css_injector');
+  foreach ($query->execute() as $id) {
+    $rule = CssInjector::load($id);
+    $url = parse_url(file_create_url(file_build_uri("asset_injector/$id.css")));
+    $url['path'] = str_replace(base_path(), '/', $url['path']);
+    $libraries["css/$id"] = [
+      'css' => [
+        'theme' => [
+          $url['path'] => [
+            'weight' => 0,
+            'preprocess' => is_null($rule->preprocess) ? FALSE : $rule->preprocess,
+            'media' => $rule->media,
+          ],
+        ],
+      ],
+    ];
+  }
+  return $libraries;
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function asset_injector_page_attachments(array &$attachments) {
+  $entities = ['js_injector', 'css_injector'];
+  foreach ($entities as $entity_type) {
+    $query = \Drupal::entityQuery($entity_type);
+
+    foreach ($query->execute() as $id) {
+      $class = \Drupal::entityTypeManager()
+        ->getDefinition($entity_type)
+        ->getClass();
+
+      $rule = $class::load($id);
+      $ext = $rule->extension;
+      if ($rule->isActive()) {
+        $file_name = file_build_uri("asset_injector/$id.$ext");
+        if (!file_exists($file_name)) {
+          file_unmanaged_save_data($rule->code, $file_name, FILE_EXISTS_REPLACE);
+        }
+        $attachments['#attached']['library'][] = "asset_injector/$ext/$id";
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+name: Views Parity Row
+description: Provide a new Views row plugin that enable alternate view mode on particular rows.
+# core: 8.x
+type: module
+package: Views
+dependencies:
+ - views
+
+# Information added by Drupal.org packaging script on 2015-11-22
+version: '8.x-1.2'
+core: '8.x'
+project: 'views_parity_row'
+datestamp: 1448219343
